@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.views.generic import ListView
 
 from author_book.models import Author

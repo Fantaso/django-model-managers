@@ -34,7 +34,10 @@ class AuthorModelTests(TestCase):
         self.assertEqual(first_author.first_name, 'Carlos')
 
         # Test a concatenation of query before using the manager method
-        carlos = Author.objects.filter(first_name='Carlos').annotate_with_copies_sold().first()
-
+        carlos = (
+            Author.objects
+                .filter(first_name='Carlos')
+                .annotate_with_copies_sold().first()
+        )
         self.assertEqual(carlos.copies_sold, 105)
         self.assertEqual(carlos.first_name, 'Carlos')
