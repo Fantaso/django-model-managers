@@ -12,8 +12,11 @@ class AuthorQuerySet(models.QuerySet):
         return self.annotate(num_of_books=Count('books'))
 
     def high_ranking_authors(self):
-        """Ranking based on copies sold"""
-        return self.filter(copies_sold__gte=100)
+        """Ranking based on copies sold. Concatenating another query method."""
+        return (
+            self.annotate_with_copies_sold()
+                .filter(copies_sold__gte=100)
+        )
 
 
 class AuthorManager(models.Manager):
