@@ -1,8 +1,5 @@
 from django.db import models
-<<<<<<< HEAD
 
-# Create your models here.
-=======
 from django.db.models import Sum, Count
 
 
@@ -56,4 +53,3 @@ class Book(models.Model):
 
     def __str__(self):
         return f'<Book: {self.title} by {self.copies_sold}>'
->>>>>>> tmp

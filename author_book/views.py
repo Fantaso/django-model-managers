@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-from django.shortcuts import render
-
-# Create your views here.
-=======
 from django.views.generic import ListView
 
 from author_book.models import Author
@@ -29,4 +24,3 @@ class AuthorMoreComplexView(ListView):
             .annotate_with_num_of_books()
             .order_by('-copies_sold')
     )
->>>>>>> tmp

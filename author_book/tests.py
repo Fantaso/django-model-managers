@@ -1,8 +1,5 @@
 from django.test import TestCase
 
-<<<<<<< HEAD
-# Create your tests here.
-=======
 from author_book.models import Author, Book
 
 
@@ -44,4 +41,3 @@ class AuthorModelTests(TestCase):
         )
         self.assertEqual(carlos.copies_sold, 105)
         self.assertEqual(carlos.first_name, 'Carlos')
->>>>>>> tmp
