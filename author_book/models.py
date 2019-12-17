@@ -20,25 +20,29 @@ class AuthorQuerySet(models.QuerySet):
         )
 
 
-class AuthorManager(models.Manager):
-    def get_queryset(self):
-        return AuthorQuerySet(self.model, using=self._db)
-
-    def annotate_with_copies_sold(self):
-        return self.get_queryset().annotate_with_copies_sold()
-
-    # Extra methods - Test purpose only
-    def annotate_with_num_of_books(self):
-        return self.get_queryset().annotate_with_num_of_books()
-
-    def high_ranking_authors(self):
-        return self.get_queryset().high_ranking_authors()
+#############################################################################################
+###### We could also only used the AuthorQuerySet.as_manager() to avoid the Manager declaration ###
+#############################################################################################
+# class AuthorManager(models.Manager):
+#     def get_queryset(self):
+#         return AuthorQuerySet(self.model, using=self._db)
+#
+#     def annotate_with_copies_sold(self):
+#         return self.get_queryset().annotate_with_copies_sold()
+#
+#     # Extra methods - Test purpose only
+#     def annotate_with_num_of_books(self):
+#         return self.get_queryset().annotate_with_num_of_books()
+#
+#     def high_ranking_authors(self):
+#         return self.get_queryset().high_ranking_authors()
 
 
 class Author(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    objects = AuthorManager()
+    # objects = AuthorManager.manager()
+    objects = AuthorQuerySet.as_manager()
 
     def __str__(self):
         return f'<Author: {self.first_name} {self.last_name}>'
