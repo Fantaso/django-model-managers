@@ -41,7 +41,7 @@ class AuthorQuerySet(models.QuerySet):
 class Author(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    # objects = AuthorManager.manager()
+    # objects = AuthorManager()
     objects = AuthorQuerySet.as_manager()
 
     def __str__(self):
